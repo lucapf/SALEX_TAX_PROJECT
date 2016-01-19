@@ -10,8 +10,14 @@ http://www.springframework.org/schema/util/spring-util-4.0.xsd">
     
 
     <import resource="classpath:tax-bean.xml"/>
+    <bean id="productCategoryDecoder" class="com.alten.saletaxproj.ProductCategoryDecoder"/>
+    <bean id="ShoppingBasketItemLineParser" scope="singleton" class="com.alten.saletaxproj.input.parser.ShoppingBasketItemLineParser">
+        <property name="linePattern" value="([0-9]*)\b([a-zA-Z\ ]*)\b([0-9\.]*)\b" />   
+        <property name="IMPORTED" value="IMPORTED"/>
+        <property name="PRODUCT_CATEGORY_DECODER" ref="productCategoryDecoder"></property>           
+    </bean>
     <bean id="invoiceBuilder" class="com.alten.saletaxproj.InvoiceBuilder"/>
-    <bean id="taxCalculator" class="com.alten.saletaxproj.TaxCalculator">
+    <bean id="taxCalculator" class="com.alten.saletaxproj.tax.calculator.TaxCalculator">
         <property name="taxes">
         <set>
            

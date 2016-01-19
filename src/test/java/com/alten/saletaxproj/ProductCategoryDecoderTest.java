@@ -25,7 +25,7 @@ public class ProductCategoryDecoderTest {
         assertEquals(pcd.match(message), EProductCategory.FOOD);
         message="1 bottle of pills imported";
         assertEquals(pcd.match(message), EProductCategory.OTHERS);
-          message=" headache pills";
+          message="1 packet of headache pills at 1.9";
         assertEquals(pcd.match(message), EProductCategory.MEDICAL);
           message=" chocolates pills";
         assertEquals(pcd.match(message), EProductCategory.FOOD);

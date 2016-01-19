@@ -5,6 +5,9 @@
  */
 package com.alten.saletaxproj;
 
+import com.alten.saletaxproj.model.Item;
+import com.alten.saletaxproj.model.InputItem;
+import com.alten.saletaxproj.tax.calculator.TaxCalculator;
 import com.alten.saletaxproj.model.EProductCategory;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,7 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author luca
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/beans.xml")
+@ContextConfiguration(locations = {"/beans.xml"})
 public class TaxCalculatorTest {
     @Autowired
     TaxCalculator tc;

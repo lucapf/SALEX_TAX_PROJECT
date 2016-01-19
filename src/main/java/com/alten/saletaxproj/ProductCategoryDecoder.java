@@ -5,8 +5,8 @@
  */
 package com.alten.saletaxproj;
 
+import com.alten.saletaxproj.input.parser.ProductCategoryNotConfiguredException;
 import com.alten.saletaxproj.model.EProductCategory;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;

@@ -19,7 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author luca
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/tax-bean.xml")
+@ContextConfiguration(locations = {"classpath:/tax-bean.xml"})
 public class ITaxConfigurationTest {
     @Autowired
     @Qualifier("basicTaxConfiguration")

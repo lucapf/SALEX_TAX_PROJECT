@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alten.saletaxproj;
+package com.alten.saletaxproj.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,9 +13,9 @@ import java.util.Set;
  * @author luca
  */
 public class Invoice {
-    private Set<Item> items;
-    private double salesTaxes;
-    private double total;
+    private Set<Item> items= new HashSet<>();
+    private double salesTaxes=0.0d;
+    private double total=0.0d;
 
     /**
      * @return the items

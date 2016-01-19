@@ -5,6 +5,7 @@
  */
 package com.alten.saletaxproj;
 
+import com.alten.saletaxproj.model.Invoice;
 import java.util.Set;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,12 +15,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author luca
  */
 public class Main {
-    public Invoice exec(Set<InputItem> inputItems){
+    public Invoice exec(String inputOrder){
         ApplicationContext ac = new ClassPathXmlApplicationContext("/beans.xml");
-        InvoiceBuilder ib=(InvoiceBuilder)ac.getBean("invoiceBuilder");
-       for(InputItem ii : inputItems){
-           
-       }
+        InvoiceBuilder ib=(InvoiceBuilder)ac.getBean("invoiceBuilder");        
+        
+        for (String orderLine : splitItems(inputOrder)){
+            
+        }
+        
        return null;
+    }
+    
+    protected String[] splitItems(String inputOrder){
+        return inputOrder==null?null:inputOrder.split("\n");
     }
 }
