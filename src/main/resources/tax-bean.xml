@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           
+       http://www.springframework.org/schema/util 
+http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+    <bean id="TaxGeneralDefaultAmount" class="java.lang.Integer"><constructor-arg value="10"/></bean>
+    <bean id="TaxImportedDefaultAmount" class="java.lang.Integer"><constructor-arg value="5"/></bean>
+    <bean id="NoTax" class="java.lang.Integer"><constructor-arg value="0"/> </bean>
+    <util:map id="basicConfigurationTax">
+           <entry key="OTHERS" value-ref="TaxGeneralDefaultAmount"/>
+            <entry key="BOOK" value-ref="NoTax"/>
+            <entry key="MEDICAL" value-ref="NoTax"/>
+            <entry key="FOOD" value-ref="NoTax"/>
+    </util:map>
+    <bean id="basicTaxConfiguration" class="com.alten.saletaxproj.configLoader.TaxConfiguratorInMemory">
+        <property name="name" value="basic"/>
+        <property  name="hmImported" ref="basicConfigurationTax"/>
+        <property  name="hmNotImported" ref="basicConfigurationTax"/>
+    </bean>
+     <bean id="importedTaxConfiguration" class="com.alten.saletaxproj.configLoader.TaxConfiguratorInMemory">
+          <property name="name" value="imported"/>
+        <property  name="hmImported">
+        <map>
+           <entry key="OTHERS" value-ref="TaxImportedDefaultAmount"/>
+        </map>
+        </property>
+        <property  name="hmNotImported">
+        <map>
+           <entry key="OTHERS" value-ref="NoTax"/>
+        </map>
+        </property>
+    </bean>
+   
+</beans>
