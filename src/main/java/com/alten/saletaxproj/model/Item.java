@@ -21,7 +21,7 @@ public class Item extends InputItem{
   private double taxAmount;
   private double finalPrice;
   public Item(InputItem inputItem){
-      super(inputItem.getAmount(),inputItem.getName(),inputItem.isImported(),inputItem.getProductKind(),inputItem.getBasicPrice());
+      super(inputItem.getAmount(),inputItem.getName(),inputItem.isImported(),inputItem.getProductCategory(),inputItem.getBasicPrice());
       this.taxes=new HashSet<Tax> ();
       taxAmount=0;
       finalPrice=0;

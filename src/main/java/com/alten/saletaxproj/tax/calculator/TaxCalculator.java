@@ -25,7 +25,7 @@ public class TaxCalculator implements ITaxCalculator {
     @Override
     public Item calculate(InputItem ii){
         Item  i = new Item(ii);
-        i.setFinalPrice(ii.getBasicPrice());
+        i.setFinalPrice(ii.getAmount()*ii.getBasicPrice());
         for(ITaxConfiguration configuredTax : taxes){
             Tax t = getTax(ii,configuredTax);
             i.getTaxes().add(t);
@@ -36,7 +36,7 @@ public class TaxCalculator implements ITaxCalculator {
     }
 
     private Tax getTax(InputItem ii, ITaxConfiguration configuredTax) {
-        int taxPerc=configuredTax.getTaxValue(ii.getProductKind(), ii.isImported());
+        int taxPerc=configuredTax.getTaxValue(ii.getProductCategory(), ii.isImported());
         double taxAmount = Math.round(ii.getAmount()*ii.getBasicPrice()*taxPerc)/100d;
         return new Tax(configuredTax.getName(),taxAmount,taxPerc);
     }

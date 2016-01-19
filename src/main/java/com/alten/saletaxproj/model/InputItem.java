@@ -15,13 +15,13 @@ public class InputItem {
     private final int amount;
     private final String name;
     private final boolean imported;
-    private final EProductCategory productKind;
+    private final EProductCategory productCategory;
     private double basicPrice; 
     public InputItem(int amount,String name, boolean imported, EProductCategory product, double basicPrice){
         this.amount=amount;
         this.name=name;
         this.imported=imported;
-        this.productKind=product;
+        this.productCategory=product;
         this.basicPrice=basicPrice;
                 
     }
@@ -36,10 +36,10 @@ public class InputItem {
     }
 
     /**
-     * @return the productKind
+     * @return the productCategory
      */
-    public EProductCategory getProductKind() {
-        return productKind;
+    public EProductCategory getProductCategory() {
+        return productCategory;
     }
 
     /**
