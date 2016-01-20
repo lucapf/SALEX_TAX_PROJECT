@@ -6,8 +6,6 @@
 package com.alten.saletaxproj.model;
 
 import com.alten.saletaxproj.Tax;
-import com.alten.saletaxproj.model.InputItem;
-import com.alten.saletaxproj.model.EProductCategory;
 import java.util.HashSet;
 import java.util.Set;
 
