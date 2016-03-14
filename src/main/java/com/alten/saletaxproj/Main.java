@@ -5,28 +5,25 @@
  */
 package com.alten.saletaxproj;
 
-import com.alten.saletaxproj.model.Invoice;
-import java.util.Set;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import org.apache.log4j.Logger;
 
 /**
  *
- * @author luca
+ * @author palancaf
  */
 public class Main {
-    public Invoice exec(String inputOrder){
-        ApplicationContext ac = new ClassPathXmlApplicationContext("/beans.xml");
-        InvoiceBuilder ib=(InvoiceBuilder)ac.getBean("invoiceBuilder");        
-        
-        for (String orderLine : splitItems(inputOrder)){
-            
+
+    private static final Logger logger = Logger.getLogger(Main.class);
+
+    public static void main(final String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            InvoicePrinter.print(new InputToinvoice().exec(br));
+
+        } catch (InvoiceBuilderException ibe) {
+            logger.error("Error in order parsing! see detail plx ", ibe);
         }
-        
-       return null;
-    }
-    
-    protected String[] splitItems(String inputOrder){
-        return inputOrder==null?null:inputOrder.split("\n");
     }
 }
