@@ -36,7 +36,7 @@ public class ShoppingBasketItemLineParserTest {
         assertEquals(ii.getBasicPrice(),8.90d,0.0d);
         assertEquals(ii.getProductCategory(),EProductCategory.FOOD);
         
-        strInput="1 packet ok spaghetti pasta 8.90";
+        strInput="1 packet ok spaghetti pasta at 8.90";
         ii = sbilp.parse(strInput);
         assertNotNull(ii);
         assertEquals(ii.getAmount(), 1);
@@ -44,7 +44,7 @@ public class ShoppingBasketItemLineParserTest {
         assertEquals(ii.getProductCategory(),EProductCategory.FOOD);
         
         
-         strInput="1 table 8.90";
+         strInput="1 table at 8.90";
         ii = sbilp.parse(strInput);
         assertNotNull(ii);
         assertEquals(ii.getAmount(), 1);

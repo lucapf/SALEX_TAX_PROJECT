@@ -35,16 +35,18 @@ public class InvoiceBuilderTest {
         assertNotNull(invoice);
         
         invoice = builder.update(invoice, "1 box of pasta spaghetti imported at 2");
-        assertNotNull(invoice.getItems());
-        assertEquals(invoice.getItems().size(), 1);
-        Item i = invoice.getItems().iterator().next();
+        assertTrue(invoice.getItemSize()>0);
+        assertEquals(invoice.getItemSize(), 1);
+        Item i = invoice.getItem();
         assertEquals(EProductCategory.FOOD,i.getProductCategory());
         assertEquals(2.1d,i.getFinalPrice(),0.0);
         assertEquals(2.1d,invoice.getTotal(),0.0);
         assertEquals(0.1d,invoice.getSalesTaxes(),0.0);
         
+        
         invoice = builder.update(invoice, "2 box of pasta spaghetti at 2");
-        assertEquals(invoice.getItems().size(), 2);
+        
+        assertEquals(1,invoice.getItemSize());
         assertEquals(6.1d,invoice.getTotal(),0.0);
         assertEquals(0.1d,invoice.getSalesTaxes(),0.0);
     }
