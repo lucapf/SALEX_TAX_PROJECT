@@ -9,13 +9,13 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
-import org.springframework.util.StringUtils;
 
 /**
  *
  * @author work
  */
 public class CurrencyFormatter {
+    private CurrencyFormatter(){}
     private static NumberFormat nf =null;
     private static NumberFormat getNumberFormat(){
         if (nf==null){ 

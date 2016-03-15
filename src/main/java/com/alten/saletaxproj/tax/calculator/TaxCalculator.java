@@ -8,9 +8,8 @@ package com.alten.saletaxproj.tax.calculator;
 import com.alten.saletaxproj.model.InputItem;
 import com.alten.saletaxproj.model.Item;
 import com.alten.saletaxproj.Tax;
-import com.alten.saletaxproj.configLoader.ITaxConfiguration;
+import com.alten.saletaxproj.configloader.ITaxConfiguration;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,7 @@ public class TaxCalculator implements ITaxCalculator {
     private Tax getTax(InputItem ii, ITaxConfiguration configuredTax) {
         int taxPerc=configuredTax.getTaxValue(ii.getProductCategory(), ii.isImported());
         
-        BigDecimal taxAmount =new BigDecimal((ii.getAmount()*ii.getBasicPrice()*taxPerc))
+        BigDecimal taxAmount =BigDecimal.valueOf(ii.getAmount()*ii.getBasicPrice()*taxPerc)
                 .divide(ONE_HUNDRED, 2, RoundingMode.UP)
                 .multiply(TWENTY).setScale(0, RoundingMode.UP)
                 .divide(TWENTY,2,RoundingMode.UP);

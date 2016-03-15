@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alten.saletaxproj.configLoader;
+package com.alten.saletaxproj.configloader;
 
 import com.alten.saletaxproj.model.EProductCategory;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -14,45 +15,44 @@ import java.util.HashMap;
  */
 public class TaxConfiguratorInMemory  implements ITaxConfiguration{
     private String name;
-    private final Integer ONE_THOUSAND=100;
-    private HashMap<EProductCategory,Integer> hmImported;
-    private HashMap<EProductCategory,Integer> hmNotImported;
+    private static final Integer ONE_HUNDRED=100;
+    private Map<EProductCategory,Integer> hmImported;
+    private Map<EProductCategory,Integer> hmNotImported;
     public TaxConfiguratorInMemory(){}
     
-    @Override
-    public void load() throws TaxConfiguraitonException {
-    }
+   
 
    
     @Override
     public Integer getTaxValue(EProductCategory ekop,boolean imported){
-        HashMap<EProductCategory,Integer> currentItemSet=imported?hmImported:hmNotImported;
+        Map<EProductCategory,Integer> currentItemSet=imported?hmImported:hmNotImported;
         return currentItemSet.get(ekop)==null
                 ?currentItemSet.get(EProductCategory.OTHERS)
                 :currentItemSet.get(ekop);
     }
     @Override
     public double getTaxPercValue(EProductCategory ekop, boolean imported){
-        return getTaxValue(ekop, imported).doubleValue()/ONE_THOUSAND;
+        return getTaxValue(ekop, imported).doubleValue()/ONE_HUNDRED;
     }
 
     /**
      * @param hmImported the hmImported to set
      */
-    public void setHmImported(HashMap<EProductCategory,Integer> hmImported) {
+    public void setHmImported(Map<EProductCategory,Integer> hmImported) {
         this.hmImported = hmImported;
     }
 
     /**
      * @param hmNotImported the hmNotImported to set
      */
-    public void setHmNotImported(HashMap<EProductCategory,Integer> hmNotImported) {
+    public void setHmNotImported(Map<EProductCategory,Integer> hmNotImported) {
         this.hmNotImported = hmNotImported;
     }
 
     /**
      * @return the name
      */
+    @Override
     public String getName() {
         return name;
     }

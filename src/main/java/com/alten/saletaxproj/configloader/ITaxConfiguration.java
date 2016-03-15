@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alten.saletaxproj.configLoader;
+package com.alten.saletaxproj.configloader;
 
 import com.alten.saletaxproj.model.EProductCategory;
 
@@ -13,7 +13,7 @@ import com.alten.saletaxproj.model.EProductCategory;
  */
 public interface ITaxConfiguration {
     final String TAX_DEFAULT_NAME="DEFAULT";
-    public void load() throws TaxConfiguraitonException;
+    
     public Integer getTaxValue(EProductCategory ekop, boolean imported);
     public double getTaxPercValue(EProductCategory ekop, boolean imported);
     public String getName();

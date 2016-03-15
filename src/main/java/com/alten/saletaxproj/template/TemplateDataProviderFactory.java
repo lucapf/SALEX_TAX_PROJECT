@@ -7,13 +7,13 @@ package com.alten.saletaxproj.template;
 
 import com.alten.saletaxproj.model.Invoice;
 import com.alten.saletaxproj.model.Item;
-import java.util.Map;
 
 /**
  *
  * @author work
  */
 public class TemplateDataProviderFactory {
+    private TemplateDataProviderFactory(){}
     public static ITemplateDataProvider getProvider(Item t){
      return  new InvoiceItemTemplateDataProvider(t);
     }

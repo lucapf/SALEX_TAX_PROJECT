@@ -23,7 +23,8 @@ import org.apache.log4j.Logger;
  * @author palancaf
  */
 class InvoicePrinter {
-    private static final Logger logger = Logger.getLogger(InvoicePrinter.class);
+    private InvoicePrinter(){}
+    private static final Logger LOGGER = Logger.getLogger(InvoicePrinter.class);
     
     private static PrintWriter ps = new PrintWriter(new OutputStreamWriter(System.out));
     
@@ -41,7 +42,7 @@ class InvoicePrinter {
         ps.close();
     }
     static void print(Item item)throws InvoicePrinterException{
-        logger.debug("stampo item: " + item.toString());
+        LOGGER.debug("stampo item: " + item.toString());
         print(TemplateDataProviderFactory.getProvider(item), PATTERN_ITEM); 
     }
     private static void print(ITemplateDataProvider templateDataProvider, String pattern) throws InvoicePrinterException {
@@ -50,7 +51,7 @@ class InvoicePrinter {
         }
         String outputItem = pattern;
         Map<String,String> bookmarks=templateDataProvider.getBookmarks();
-        logger.debug("bookmarks : " + bookmarks.toString());        
+        LOGGER.debug("bookmarks : " + bookmarks.toString());        
         for (String field : getFields(pattern)) {
                 outputItem = outputItem.replace(":"+field, bookmarks.get(field));
             

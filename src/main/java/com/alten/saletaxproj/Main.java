@@ -14,18 +14,18 @@ import org.apache.log4j.Logger;
  * @author palancaf
  */
 public class Main {
-
-    private static final Logger logger = Logger.getLogger(Main.class);
-
+    private Main(){}
+    private static final Logger LOGGER = Logger.getLogger(Main.class);
+ 
     public static void main(final String[] args) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             InvoicePrinter.print(new InputToinvoice().exec(br));
 
         } catch (InvoiceBuilderException ibe) {
-            logger.error("Error in order parsing! see detail plx ", ibe);
+            LOGGER.error("Error in order parsing! see detail plx ", ibe);
         }catch (InvoicePrinterException ipe){
-            logger.error("Error in printing order! see detail plx ", ipe);
+            LOGGER.error("Error in printing order! see detail plx ", ipe);
         }
     }
 }
