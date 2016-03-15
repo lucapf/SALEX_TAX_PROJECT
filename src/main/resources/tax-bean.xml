@@ -22,12 +22,12 @@ http://www.springframework.org/schema/util/spring-util-4.0.xsd">
         <entry key="MEDICAL" value-ref="NoTax"/>
         <entry key="FOOD" value-ref="NoTax"/>
     </util:map>
-    <bean id="basicTaxConfiguration" class="com.alten.saletaxproj.configLoader.TaxConfiguratorInMemory">
+    <bean id="basicTaxConfiguration" class="com.alten.saletaxproj.configloader.TaxConfiguratorInMemory">
         <property name="name" value="basic"/>
         <property  name="hmImported" ref="basicConfigurationTax"/>
         <property  name="hmNotImported" ref="basicConfigurationTax"/>
     </bean>
-    <bean id="importedTaxConfiguration" class="com.alten.saletaxproj.configLoader.TaxConfiguratorInMemory">
+    <bean id="importedTaxConfiguration" class="com.alten.saletaxproj.configloader.TaxConfiguratorInMemory">
         <property name="name" value="imported"/>
         <property  name="hmImported">
             <map>
