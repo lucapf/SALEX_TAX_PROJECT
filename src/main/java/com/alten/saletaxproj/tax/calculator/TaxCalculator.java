@@ -9,6 +9,9 @@ import com.alten.saletaxproj.model.InputItem;
 import com.alten.saletaxproj.model.Item;
 import com.alten.saletaxproj.Tax;
 import com.alten.saletaxproj.configLoader.ITaxConfiguration;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author luca
  */
 public class TaxCalculator implements ITaxCalculator {
+    private static final BigDecimal ONE_HUNDRED= new BigDecimal(100);
+    private static final BigDecimal TWENTY=new BigDecimal(20);
     @Autowired
     Set<ITaxConfiguration> taxes;
     public void setTaxes(Set<ITaxConfiguration> taxes){
@@ -37,8 +42,13 @@ public class TaxCalculator implements ITaxCalculator {
 
     private Tax getTax(InputItem ii, ITaxConfiguration configuredTax) {
         int taxPerc=configuredTax.getTaxValue(ii.getProductCategory(), ii.isImported());
-        double taxAmount = Math.round(ii.getAmount()*ii.getBasicPrice()*taxPerc*20/100)/20d;
-        return new Tax(configuredTax.getName(),taxAmount,taxPerc);
+        
+        BigDecimal taxAmount =new BigDecimal((ii.getAmount()*ii.getBasicPrice()*taxPerc))
+                .divide(ONE_HUNDRED, 2, RoundingMode.UP)
+                .multiply(TWENTY).setScale(0, RoundingMode.UP)
+                .divide(TWENTY,2,RoundingMode.UP);
+        
+        return new Tax(configuredTax.getName(),taxAmount.doubleValue(),taxPerc);
     }
     
 }

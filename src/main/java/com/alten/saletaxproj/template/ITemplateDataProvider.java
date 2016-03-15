@@ -20,4 +20,6 @@ public abstract class ITemplateDataProvider<T> {
         return t;
     }
     public abstract Map<String,String> getBookmarks();
+
+   
 }

@@ -66,5 +66,10 @@ public class Item extends InputItem{
     public void setFinalPrice(double finalPrice) {
         this.finalPrice = finalPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" + "taxes=" + taxes + ", taxAmount=" + taxAmount + ", finalPrice=" + finalPrice + '}';
+    }
   
 }
