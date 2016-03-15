@@ -44,5 +44,10 @@ public class Tax {
         return perc;
     }
 
+    @Override
+    public String toString() {
+        return "Tax{" + "name=" + name + ", amount=" + amount + ", perc=" + perc + '}';
+    }
+
    
 }

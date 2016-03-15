@@ -41,6 +41,7 @@ class InvoicePrinter {
         ps.close();
     }
     static void print(Item item)throws InvoicePrinterException{
+        logger.debug("stampo item: " + item.toString());
         print(TemplateDataProviderFactory.getProvider(item), PATTERN_ITEM); 
     }
     private static void print(ITemplateDataProvider templateDataProvider, String pattern) throws InvoicePrinterException {
@@ -49,7 +50,7 @@ class InvoicePrinter {
         }
         String outputItem = pattern;
         Map<String,String> bookmarks=templateDataProvider.getBookmarks();
-        logger.debug("bookmarks : " + bookmarks.toString());
+        logger.debug("bookmarks : " + bookmarks.toString());        
         for (String field : getFields(pattern)) {
                 outputItem = outputItem.replace(":"+field, bookmarks.get(field));
             
