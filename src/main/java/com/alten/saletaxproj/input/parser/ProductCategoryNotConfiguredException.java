@@ -10,7 +10,8 @@ package com.alten.saletaxproj.input.parser;
  * @author luca
  */
 public class ProductCategoryNotConfiguredException extends Exception {
-    public ProductCategoryNotConfiguredException(String message){
+
+    public ProductCategoryNotConfiguredException(String message) {
         super(message);
     }
 }

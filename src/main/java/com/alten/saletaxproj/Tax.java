@@ -10,13 +10,15 @@ package com.alten.saletaxproj;
  * @author luca
  */
 public class Tax {
+
     private final String name;
     private final double amount;
     private final double perc;
-    public Tax(String name, double amount, double perc){
-        this.name=name;
-        this.amount=amount;
-        this.perc=perc;
+
+    public Tax(String name, double amount, double perc) {
+        this.name = name;
+        this.amount = amount;
+        this.perc = perc;
     }
 
     /**
@@ -26,8 +28,6 @@ public class Tax {
         return name;
     }
 
-   
-
     /**
      * @return the amount
      */
@@ -36,8 +36,10 @@ public class Tax {
     }
 
     /**
-   
-    /**
+     *
+     * /
+     *
+     **
      * @return the perc
      */
     public double getPerc() {
@@ -49,5 +51,4 @@ public class Tax {
         return "Tax{" + "name=" + name + ", amount=" + amount + ", perc=" + perc + '}';
     }
 
-   
 }

@@ -10,10 +10,17 @@ package com.alten.saletaxproj;
  * @author palancaf
  */
 public class InvoiceBuilderException extends Exception {
-    public InvoiceBuilderException(Exception e){super(e);}
-    public InvoiceBuilderException(String message){super(message);}
-    public InvoiceBuilderException(String message, Exception e){
+
+    public InvoiceBuilderException(Exception e) {
+        super(e);
+    }
+
+    public InvoiceBuilderException(String message) {
+        super(message);
+    }
+
+    public InvoiceBuilderException(String message, Exception e) {
         super(message, e);
     }
-    
+
 }

@@ -17,23 +17,25 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author luca
  */
 public class InputToinvoice {
-   private static final Logger LOGGER = Logger.getLogger(InputToinvoice.class);
-    public Invoice exec(BufferedReader inputOrder)throws InvoiceBuilderException{
+
+    private static final Logger LOGGER = Logger.getLogger(InputToinvoice.class);
+
+    public Invoice exec(BufferedReader inputOrder) throws InvoiceBuilderException {
         ApplicationContext ac = new ClassPathXmlApplicationContext("/beans.xml");
-        InvoiceBuilder ib=(InvoiceBuilder)ac.getBean("invoiceBuilder");        
+        InvoiceBuilder ib = (InvoiceBuilder) ac.getBean("invoiceBuilder");
         Invoice invoice = ib.create();
         String orderLine;
-        try{
-          
-        while ( (orderLine = inputOrder.readLine())!= null){
-            LOGGER.debug("processing: " + orderLine);
-            invoice = ib.update(invoice, orderLine);
+        try {
+
+            while ((orderLine = inputOrder.readLine()) != null) {
+                LOGGER.debug("processing: " + orderLine);
+                invoice = ib.update(invoice, orderLine);
+            }
+            LOGGER.debug("number of items processed: " + invoice.getItemSize());
+        } catch (IOException ioe) {
+            throw new InvoiceBuilderException(ioe);
         }
-        LOGGER.debug("number of items processed: " + invoice.getItemSize());
-        }catch (IOException ioe){
-            throw  new InvoiceBuilderException(ioe);
-        }
-       return invoice;
+        return invoice;
     }
-    
+
 }

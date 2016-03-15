@@ -14,5 +14,5 @@ import com.alten.saletaxproj.model.InputItem;
 public interface IInputParser {
 
     InputItem parse(String line) throws ProductCategoryNotConfiguredException;
-    
+
 }

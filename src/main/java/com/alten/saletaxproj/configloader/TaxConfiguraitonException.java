@@ -10,10 +10,12 @@ package com.alten.saletaxproj.configloader;
  * @author luca
  */
 public class TaxConfiguraitonException extends Exception {
-    public TaxConfiguraitonException(String message, Exception e){
-        super(message,e);
+
+    public TaxConfiguraitonException(String message, Exception e) {
+        super(message, e);
     }
-    public TaxConfiguraitonException (String message){
+
+    public TaxConfiguraitonException(String message) {
         super(message);
     }
 }

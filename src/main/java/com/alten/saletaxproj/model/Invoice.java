@@ -15,9 +15,10 @@ import java.util.Stack;
  * @author luca
  */
 public class Invoice {
-    private Deque<Item> items= new ArrayDeque<Item>() ;
-    private double salesTaxes=0.0d;
-    private double total=0.0d;
+
+    private Deque<Item> items = new ArrayDeque<Item>();
+    private double salesTaxes = 0.0d;
+    private double total = 0.0d;
 
     /**
      * @return the items
@@ -25,7 +26,8 @@ public class Invoice {
     public Item getItem() {
         return items.pollLast();
     }
-    public int getItemSize(){
+
+    public int getItemSize() {
         return items.size();
     }
 
@@ -63,5 +65,5 @@ public class Invoice {
     public void setTotal(double total) {
         this.total = total;
     }
-    
+
 }

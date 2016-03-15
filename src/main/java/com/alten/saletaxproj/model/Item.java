@@ -13,17 +13,18 @@ import java.util.Set;
  *
  * @author luca
  */
-public class Item extends InputItem{
- 
-  private Set<Tax> taxes;
-  private double taxAmount;
-  private double finalPrice;
-  public Item(InputItem inputItem){
-      super(inputItem.getAmount(),inputItem.getName(),inputItem.isImported(),inputItem.getProductCategory(),inputItem.getBasicPrice());
-      this.taxes=new HashSet<Tax> ();
-      taxAmount=0;
-      finalPrice=0;
-  }
+public class Item extends InputItem {
+
+    private Set<Tax> taxes;
+    private double taxAmount;
+    private double finalPrice;
+
+    public Item(InputItem inputItem) {
+        super(inputItem.getAmount(), inputItem.getName(), inputItem.isImported(), inputItem.getProductCategory(), inputItem.getBasicPrice());
+        this.taxes = new HashSet<Tax>();
+        taxAmount = 0;
+        finalPrice = 0;
+    }
 
     /**
      * @return the taxes
@@ -71,5 +72,5 @@ public class Item extends InputItem{
     public String toString() {
         return "Item{" + "taxes=" + taxes + ", taxAmount=" + taxAmount + ", finalPrice=" + finalPrice + '}';
     }
-  
+
 }

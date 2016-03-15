@@ -10,5 +10,5 @@ package com.alten.saletaxproj.model;
  * @author luca
  */
 public enum EProductCategory {
-    OTHERS,BOOK,MEDICAL,FOOD;
+    OTHERS, BOOK, MEDICAL, FOOD;
 }

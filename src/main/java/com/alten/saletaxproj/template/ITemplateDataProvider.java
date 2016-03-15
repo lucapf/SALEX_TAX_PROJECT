@@ -12,14 +12,17 @@ import java.util.Map;
  * @author work
  */
 public abstract class ITemplateDataProvider<T> {
+
     private T t;
-    public ITemplateDataProvider(T t){
-        this.t=t;
+
+    public ITemplateDataProvider(T t) {
+        this.t = t;
     }
-    public T getType(){
+
+    public T getType() {
         return t;
     }
-    public abstract Map<String,String> getBookmarks();
 
-   
+    public abstract Map<String, String> getBookmarks();
+
 }

@@ -15,5 +15,5 @@ import com.alten.saletaxproj.model.Item;
 public interface ITaxCalculator {
 
     public Item calculate(InputItem ii);
-    
+
 }

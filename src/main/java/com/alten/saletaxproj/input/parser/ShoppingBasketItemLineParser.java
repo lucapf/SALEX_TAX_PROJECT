@@ -17,17 +17,17 @@ import java.util.regex.Pattern;
  */
 public class ShoppingBasketItemLineParser implements IInputParser {
 
-    private String linePattern; 
-    private  Pattern p= null;
-    private String IMPORTED ;
+    private String linePattern;
+    private Pattern p = null;
+    private String IMPORTED;
     private ProductCategoryDecoder PRODUCT_CATEGORY_DECODER = new ProductCategoryDecoder();
 
-    private ShoppingBasketItemLineParser() {     
+    private ShoppingBasketItemLineParser() {
     }
 
     @Override
     public InputItem parse(String line) throws ProductCategoryNotConfiguredException {
-        
+
         Matcher m = getPattern().matcher(line);
         InputItem inputItem = null;
         if (m.find()) {
@@ -60,10 +60,10 @@ public class ShoppingBasketItemLineParser implements IInputParser {
     }
 
     private Pattern getPattern() {
-        if (p==null) {
-            p=Pattern.compile(linePattern);
+        if (p == null) {
+            p = Pattern.compile(linePattern);
         }
         return p;
     }
-    
+
 }

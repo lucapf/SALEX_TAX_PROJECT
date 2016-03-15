@@ -12,22 +12,26 @@ import com.alten.saletaxproj.model.EProductCategory;
  * @author luca
  */
 public class InputItem {
+
     private final int amount;
     private final String name;
     private final boolean imported;
     private final EProductCategory productCategory;
-    private double basicPrice; 
-    public InputItem(int amount,String name, boolean imported, EProductCategory product, double basicPrice){
-        this.amount=amount;
-        this.name=name;
-        this.imported=imported;
-        this.productCategory=product;
-        this.basicPrice=basicPrice;
-                
+    private double basicPrice;
+
+    public InputItem(int amount, String name, boolean imported, EProductCategory product, double basicPrice) {
+        this.amount = amount;
+        this.name = name;
+        this.imported = imported;
+        this.productCategory = product;
+        this.basicPrice = basicPrice;
+
     }
-    public int getAmount(){
+
+    public int getAmount() {
         return amount;
     }
+
     /**
      * @return the imported
      */
@@ -55,5 +59,5 @@ public class InputItem {
     public String getName() {
         return name;
     }
-    
+
 }

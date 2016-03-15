@@ -12,10 +12,13 @@ import com.alten.saletaxproj.model.EProductCategory;
  * @author luca
  */
 public interface ITaxConfiguration {
-    final String TAX_DEFAULT_NAME="DEFAULT";
-    
+
+    final String TAX_DEFAULT_NAME = "DEFAULT";
+
     public Integer getTaxValue(EProductCategory ekop, boolean imported);
+
     public double getTaxPercValue(EProductCategory ekop, boolean imported);
+
     public String getName();
-   
+
 }

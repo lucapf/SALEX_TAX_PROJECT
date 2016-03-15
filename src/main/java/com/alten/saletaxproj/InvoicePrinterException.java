@@ -10,10 +10,12 @@ package com.alten.saletaxproj;
  * @author work
  */
 public class InvoicePrinterException extends Exception {
-    public InvoicePrinterException(String message, Exception e){
-        super(message,e);
+
+    public InvoicePrinterException(String message, Exception e) {
+        super(message, e);
     }
-    public InvoicePrinterException (String message){
+
+    public InvoicePrinterException(String message) {
         super(message);
     }
 }

@@ -14,6 +14,7 @@ import java.io.OutputStream;
  * @author palancaf
  */
 public class Order {
+
     private BufferedReader inputFile;
     private OutputStream outputFile;
 
@@ -32,6 +33,5 @@ public class Order {
     public void setOutputFile(OutputStream outputFile) {
         this.outputFile = outputFile;
     }
-    
-    
+
 }

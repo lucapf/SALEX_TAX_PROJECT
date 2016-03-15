@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @author work
  */
-public class InvoiceDataProvider extends ITemplateDataProvider<Invoice>{
+public class InvoiceDataProvider extends ITemplateDataProvider<Invoice> {
 
     public InvoiceDataProvider(Invoice t) {
         super(t);
@@ -21,10 +21,10 @@ public class InvoiceDataProvider extends ITemplateDataProvider<Invoice>{
 
     @Override
     public Map<String, String> getBookmarks() {
-        Map<String,String> m = new HashMap<>();
+        Map<String, String> m = new HashMap<>();
         m.put("salesTaxes", CurrencyFormatter.format(getType().getSalesTaxes()));
         m.put("total", CurrencyFormatter.format(getType().getTotal()));
         return m;
     }
-    
+
 }

@@ -19,35 +19,38 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author luca
  */
 public class TaxCalculator implements ITaxCalculator {
-    private static final BigDecimal ONE_HUNDRED= new BigDecimal(100);
-    private static final BigDecimal TWENTY=new BigDecimal(20);
+
+    private static final BigDecimal ONE_HUNDRED = new BigDecimal(100);
+    private static final BigDecimal TWENTY = new BigDecimal(20);
     @Autowired
     Set<ITaxConfiguration> taxes;
-    public void setTaxes(Set<ITaxConfiguration> taxes){
-        this.taxes=taxes;
+
+    public void setTaxes(Set<ITaxConfiguration> taxes) {
+        this.taxes = taxes;
     }
+
     @Override
-    public Item calculate(InputItem ii){
-        Item  i = new Item(ii);
-        i.setFinalPrice(ii.getAmount()*ii.getBasicPrice());
-        for(ITaxConfiguration configuredTax : taxes){
-            Tax t = getTax(ii,configuredTax);
+    public Item calculate(InputItem ii) {
+        Item i = new Item(ii);
+        i.setFinalPrice(ii.getAmount() * ii.getBasicPrice());
+        for (ITaxConfiguration configuredTax : taxes) {
+            Tax t = getTax(ii, configuredTax);
             i.getTaxes().add(t);
-            i.setFinalPrice(i.getFinalPrice()+t.getAmount());
-            i.setTaxAmount(i.getTaxAmount()+t.getAmount());
+            i.setFinalPrice(i.getFinalPrice() + t.getAmount());
+            i.setTaxAmount(i.getTaxAmount() + t.getAmount());
         }
-      return i;  
+        return i;
     }
 
     private Tax getTax(InputItem ii, ITaxConfiguration configuredTax) {
-        int taxPerc=configuredTax.getTaxValue(ii.getProductCategory(), ii.isImported());
-        
-        BigDecimal taxAmount =BigDecimal.valueOf(ii.getAmount()*ii.getBasicPrice()*taxPerc)
+        int taxPerc = configuredTax.getTaxValue(ii.getProductCategory(), ii.isImported());
+
+        BigDecimal taxAmount = BigDecimal.valueOf(ii.getAmount() * ii.getBasicPrice() * taxPerc)
                 .divide(ONE_HUNDRED, 2, RoundingMode.UP)
                 .multiply(TWENTY).setScale(0, RoundingMode.UP)
-                .divide(TWENTY,2,RoundingMode.UP);
-        
-        return new Tax(configuredTax.getName(),taxAmount.doubleValue(),taxPerc);
+                .divide(TWENTY, 2, RoundingMode.UP);
+
+        return new Tax(configuredTax.getName(), taxAmount.doubleValue(), taxPerc);
     }
-    
+
 }

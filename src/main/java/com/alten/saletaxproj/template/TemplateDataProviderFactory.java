@@ -13,11 +13,15 @@ import com.alten.saletaxproj.model.Item;
  * @author work
  */
 public class TemplateDataProviderFactory {
-    private TemplateDataProviderFactory(){}
-    public static ITemplateDataProvider getProvider(Item t){
-     return  new InvoiceItemTemplateDataProvider(t);
+
+    private TemplateDataProviderFactory() {
     }
-    public static ITemplateDataProvider getProvider(Invoice i){
+
+    public static ITemplateDataProvider getProvider(Item t) {
+        return new InvoiceItemTemplateDataProvider(t);
+    }
+
+    public static ITemplateDataProvider getProvider(Invoice i) {
         return new InvoiceDataProvider(i);
     }
 }

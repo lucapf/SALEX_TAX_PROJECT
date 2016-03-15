@@ -15,21 +15,26 @@ import java.util.Locale;
  * @author work
  */
 public class CurrencyFormatter {
-    private CurrencyFormatter(){}
-    private static NumberFormat nf =null;
-    private static NumberFormat getNumberFormat(){
-        if (nf==null){ 
+
+    private CurrencyFormatter() {
+    }
+    private static NumberFormat nf = null;
+
+    private static NumberFormat getNumberFormat() {
+        if (nf == null) {
             nf = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
-            DecimalFormatSymbols decimalFormatSymbols = ((DecimalFormat)nf).getDecimalFormatSymbols();
+            DecimalFormatSymbols decimalFormatSymbols = ((DecimalFormat) nf).getDecimalFormatSymbols();
             decimalFormatSymbols.setCurrencySymbol("");
-            ((DecimalFormat)nf).setDecimalFormatSymbols(decimalFormatSymbols);
+            ((DecimalFormat) nf).setDecimalFormatSymbols(decimalFormatSymbols);
         }
         return nf;
     }
-   public static String format(double price){
-       return getNumberFormat().format(price);
-   } 
-   public static String format(int quantity){
-       return String.valueOf(quantity);
-   }
+
+    public static String format(double price) {
+        return getNumberFormat().format(price);
+    }
+
+    public static String format(int quantity) {
+        return String.valueOf(quantity);
+    }
 }
