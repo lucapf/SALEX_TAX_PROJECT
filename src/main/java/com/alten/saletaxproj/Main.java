@@ -24,6 +24,8 @@ public class Main {
 
         } catch (InvoiceBuilderException ibe) {
             logger.error("Error in order parsing! see detail plx ", ibe);
+        }catch (InvoicePrinterException ipe){
+            logger.error("Error in printing order! see detail plx ", ipe);
         }
     }
 }

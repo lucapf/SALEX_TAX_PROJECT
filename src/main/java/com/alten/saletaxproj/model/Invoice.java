@@ -5,30 +5,35 @@
  */
 package com.alten.saletaxproj.model;
 
-import java.util.HashSet;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  *
  * @author luca
  */
 public class Invoice {
-    private Set<Item> items= new HashSet<>();
+    private Deque<Item> items= new ArrayDeque<Item>() ;
     private double salesTaxes=0.0d;
     private double total=0.0d;
 
     /**
      * @return the items
      */
-    public Set<Item> getItems() {
-        return items;
+    public Item getItem() {
+        return items.pollLast();
+    }
+    public int getItemSize(){
+        return items.size();
     }
 
     /**
      * @param items the items to set
      */
-    public void setItems(Set<Item> items) {
-        this.items = items;
+    public void pushItem(Item item) {
+        this.items.push(item);
     }
 
     /**
