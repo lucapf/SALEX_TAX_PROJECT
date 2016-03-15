@@ -5,6 +5,7 @@
  */
 package com.alten.saletaxproj.configLoader;
 
+import com.alten.saletaxproj.configloader.ITaxConfiguration;
 import com.alten.saletaxproj.model.EProductCategory;
 import org.junit.Test;
 import static org.junit.Assert.*;
